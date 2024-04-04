@@ -1,13 +1,9 @@
-import { createServer } from "http";
-import { getList } from "./list.js";
-import { addresses } from "./data.js";
+import express from "express";
 
+const app = express();
 
-createServer((req, res) => {
-  res.writeHead(200, { "content-type": "text/html" });
-  const responseBody = getList(addresses)
+app.get("/", (req, res) => res.send("My first Express application"));
 
-  res.end(responseBody);
-}).listen(8080, () =>
-  console.log("\nAddress book reachable via http://localhost:8080\n")
+app.listen(8080, () =>
+  console.log("Movie database accessible at http://localhost:8080")
 );
